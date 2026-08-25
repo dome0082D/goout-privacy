@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.GoOut.app",
+      "sha256_cert_fingerprints": [
+        "DB:93:30:4F:54:2A:B2:EB:57:9E:43:25:04:84:1B:7B:4D:11:C6:BB:8C:58:2A:27:66:77:CE:27:6C:27:D8:31"
+      ]
+    }
+  }
+]
