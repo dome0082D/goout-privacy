@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GoOut — Apri l'invito</title>
+<meta name="description" content="Apri questo invito nell'app GoOut.">
+<meta name="robots" content="noindex">
+<!--
+    LA PAGINA CHE RACCOGLIE GLI INVITI
+
+    I link degli inviti hanno la forma gruppogoout.com/evento/<id>. Su
+    quel percorso non c'e' nessun file: sul sito ci sono solo privacy e
+    termini. GitHub Pages, quando non trova la pagina chiesta, serve
+    questa — ed e' l'unico punto in cui possiamo intercettarli.
+
+    Chi ci arriva puo' essere in tre situazioni diverse:
+
+      • ha GoOut e Android ha verificato il collegamento: l'app si apre
+        da sola e questa pagina non la vede nemmeno;
+      • ha GoOut ma la verifica non e' andata a buon fine (succede se il
+        file assetlinks non era raggiungibile quando ha installato):
+        il tasto qui sotto prova goout:// e l'app si apre lo stesso;
+      • non ha GoOut: va al negozio.
+
+    Il salto a goout:// non e' automatico di proposito. Un browser che
+    tenta di aprire un'app non installata mostra un errore di sistema
+    brutto e spaventa; meglio che sia la persona a decidere, con davanti
+    scritto cosa succede.
+-->
+<style>
+  :root {
+    --sfondo: #FBF7F4; --carta: #ffffff; --testo: #2b2622;
+    --tenue: #6b625c; --accento: #FF6B4A; --bordo: #ece4de;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --sfondo: #17140f; --carta: #211d18; --testo: #f2ece6;
+      --tenue: #a89e96; --bordo: #332c25;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--sfondo); color: var(--testo);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.65; font-size: 16px;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  main {
+    background: var(--carta); border: 1px solid var(--bordo);
+    border-radius: 20px; padding: 34px 28px 30px; max-width: 420px;
+    width: 100%; text-align: center;
+  }
+  .segno {
+    width: 62px; height: 62px; border-radius: 18px; background: var(--accento);
+    color: #fff; font-size: 30px; font-weight: 700; line-height: 62px;
+    margin: 0 auto 20px; letter-spacing: -1px;
+  }
+  h1 { font-size: 21px; margin: 0 0 10px; letter-spacing: -.3px; }
+  p { margin: 0 0 22px; color: var(--tenue); font-size: 15px; }
+  a.tasto {
+    display: block; padding: 15px 20px; border-radius: 13px;
+    text-decoration: none; font-weight: 650; font-size: 15.5px;
+    margin-bottom: 11px;
+  }
+  a.primo { background: var(--accento); color: #fff; }
+  a.dopo {
+    background: transparent; color: var(--testo);
+    border: 1px solid var(--bordo);
+  }
+  .nota { font-size: 13.5px; color: var(--tenue); margin: 18px 0 0; }
+  .nota a { color: var(--tenue); }
+</style>
+</head>
+<body>
+<main>
+  <div class="segno">G</div>
+  <h1 id="titolo">Questo invito si apre in GoOut</h1>
+  <p id="spiega">Installa l'app: l'invito ti aspetta li dentro.</p>
+
+  <a class="tasto primo" id="negozio"
+     href="https://play.google.com/store/apps/details?id=com.GoOut.app">Scarica GoOut</a>
+  <a class="tasto dopo" id="apri" href="#" hidden>Ho gia l'app, aprila</a>
+
+  <p class="nota">
+    <a href="/">Privacy e termini d'uso</a>
+  </p>
+</main>
+
+<script>
+(function () {
+  // Il percorso dice cosa la persona stava cercando di aprire.
+  var pezzi = location.pathname.split('/').filter(Boolean);
+  var cosa = (pezzi[0] || '').toLowerCase();
+  var id = pezzi[1] || '';
+
+  var titolo = document.getElementById('titolo');
+  var spiega = document.getElementById('spiega');
+  var apri = document.getElementById('apri');
+
+  var noti = { evento: 'evento', eventi: 'evento', locale: 'locale',
+               locali: 'locale', ristorante: 'locale' };
+  var tipo = noti[cosa];
+
+  if (!tipo) {
+    // Un indirizzo che non c'entra niente: nessun invito da recuperare.
+    titolo.textContent = 'Pagina non trovata';
+    spiega.textContent = 'Il collegamento potrebbe essere incompleto.';
+    return;
+  }
+
+  if (tipo === 'locale') {
+    titolo.textContent = 'Questo locale si apre in GoOut';
+    spiega.textContent = 'Installa l\u2019app per vedere la scheda e le serate in programma.';
+  }
+
+  // Chi ha gia' l'app: lo schema privato funziona anche senza che
+  // Android abbia verificato il dominio.
+  if (id) {
+    apri.href = 'goout://' + tipo + '/' + encodeURIComponent(id);
+    apri.hidden = false;
+  }
+
+  // Su computer il negozio non serve a niente: nessuno installa
+  // un'app Android da li'.
+  if (!/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    spiega.textContent = 'Aprilo dal telefono: GoOut e\u2019 un\u2019app per cellulare.';
+  }
+})();
+</script>
+</body>
+</html>
