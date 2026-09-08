@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informativa sulla privacy &ndash; GoOut</title>
+<meta name="description" content="Come GoOut tratta i dati di chi lo usa">
+<meta name="theme-color" content="#f26c4f">
+<link rel="icon" type="image/png" href="app/favicon.png">
+<link rel="apple-touch-icon" href="app/icons/Icon-192.png">
+<style>
+
+  :root {
+    color-scheme: light;
+    --accento: #f26c4f;
+    --testo: #1a1614;
+    --tenue: #6b625d;
+    --sfondo: #faf6f2;
+    --carta: #ffffff;
+    --bordo: #e8ddd4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--sfondo); color: var(--testo);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+  }
+
+  /* ── LA FOTO GRANDE, COL TASTO DENTRO ─────────────────────
+     Il tasto per entrare sta sopra la foto, non sotto: e' la prima
+     cosa che si vede aprendo il sito, senza dover scorrere. */
+  .hero {
+    position: relative; min-height: 74vh; display: flex;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 60px 22px; overflow: hidden;
+  }
+  .hero .foto {
+    position: absolute; inset: 0; background-size: cover;
+    background-position: center; z-index: 0;
+  }
+  /* Il velo scuro non e' decorazione: sopra una foto chiara il testo
+     bianco sparisce, e la frase e' la cosa che deve leggersi. */
+  .hero .velo {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(20,14,10,.30), rgba(20,14,10,.70));
+  }
+  .hero .dentro { position: relative; z-index: 2; max-width: 560px; }
+  .hero .marchio {
+    margin: 0 0 20px; font-size: 30px; font-weight: 800; color: #fff;
+    letter-spacing: -.6px;
+  }
+  .hero h1 {
+    margin: 0 0 28px; font-size: 40px; line-height: 1.15; color: #fff;
+    letter-spacing: -1.2px; text-shadow: 0 2px 18px rgba(0,0,0,.35);
+  }
+  .hero .sotto { margin: 14px 0 0; color: rgba(255,255,255,.9); font-size: 14.5px; }
+  .hero .sotto a { color: #fff; }
+
+  .tasto {
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    background: var(--accento); color: #fff; text-decoration: none;
+    font-weight: 700; font-size: 17px; padding: 16px 34px; border-radius: 14px;
+    border: 2px solid var(--accento); cursor: pointer;
+    font-family: inherit; line-height: 1.2;
+  }
+  .tasto:hover { filter: brightness(1.07); }
+  .tasto.chiaro { background: transparent; border-color: rgba(255,255,255,.75); }
+
+  nav {
+    position: sticky; top: 0; z-index: 5; background: var(--carta);
+    border-bottom: 1px solid var(--bordo); text-align: center; padding: 11px;
+  }
+  nav a {
+    color: var(--testo); text-decoration: none; font-weight: 600;
+    font-size: 14.5px; padding: 8px 14px; border-radius: 10px;
+    display: inline-block;
+  }
+  nav a:hover { background: var(--sfondo); }
+
+  main { max-width: 820px; margin: 0 auto; padding: 26px 20px 60px; }
+  section {
+    background: var(--carta); border: 1px solid var(--bordo);
+    border-radius: 18px; padding: 24px 26px 28px; margin-bottom: 22px;
+  }
+  section > h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -.3px; }
+  .data { color: var(--tenue); font-size: 14px; margin: 0 0 22px; }
+  h2 {
+    font-size: 16.5px; margin: 28px 0 8px; padding-top: 18px;
+    border-top: 1px solid var(--bordo); color: var(--accento);
+  }
+  section > h2:first-of-type { border-top: none; padding-top: 0; margin-top: 14px; }
+  h3 { font-size: 15px; margin: 18px 0 6px; }
+  p { margin: 0 0 12px; overflow-wrap: break-word; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accento); }
+  hr { border: 0; border-top: 1px solid var(--bordo); margin: 24px 0; }
+  table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--bordo); padding: .5rem .7rem; text-align: left; }
+  th { background: var(--sfondo); }
+  footer {
+    text-align: center; color: var(--tenue); font-size: 13.5px;
+    padding: 0 20px 44px;
+  }
+  footer a { color: var(--accento); }
+
+  .occhiello { font-size: 17px; color: var(--tenue); margin: 0 0 4px; }
+  .sottotasto { color: var(--tenue); font-size: 14px; margin: 0 0 8px; }
+  .riquadro {
+    background: var(--sfondo); border: 1px solid var(--bordo);
+    border-radius: 14px; padding: 16px 18px; margin: 18px 0 0;
+  }
+  .riquadro h3 { margin-top: 0; }
+  .riquadro p:last-child { margin-bottom: 0; }
+  .cose { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; margin: 6px 0 0; }
+  .cose > div { background: var(--sfondo); border-radius: 14px; padding: 15px 17px; }
+  .cose h3 { margin: 0 0 5px; color: var(--accento); font-size: 13.5px;
+             text-transform: uppercase; letter-spacing: .04em; }
+  .cose p { margin: 0; font-size: 14.5px; }
+
+  @media (max-width: 600px) {
+    .hero { min-height: 68vh; padding: 48px 18px; }
+    .hero h1 { font-size: 29px; }
+    .hero .marchio { font-size: 25px; }
+    section { padding: 19px 17px 22px; border-radius: 14px; }
+    .cose { grid-template-columns: 1fr; }
+    .tasto { width: 100%; }
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">L&rsquo;app</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="termini.html">Termini</a>
+  <a href="cancella-account.html">Cancellare l&rsquo;account</a>
+</nav>
+
+<main>
+<section id="privacy">
+<h1>Informativa sulla privacy</h1>
+<p class="data">Ultimo aggiornamento: 30 agosto 2026</p>
+<h2>1. CHI TRATTA I TUOI DATI</h2>
+<p>Titolare del trattamento: Domenico Antonelli</p>
+<p>Persona fisica, nessuna partita IVA. Recapiti: <a href="mailto:sales@gruppogoout.com">sales@gruppogoout.com</a> — gruppogoout.com</p>
+<p>Quando GoOut diventerà un'attività registrata, questa sezione indicherà la denominazione e la sede, e i recapiti saranno quelli dell'attività.</p>
+<h2>2. QUALI DATI RACCOGLIAMO</h2>
+<p>Quando ti registri e usi GoOut vengono trattati:</p>
+<ul>
+<li>nome e cognome;</li>
+<li>username;</li>
+<li>indirizzo email;</li>
+<li>data di nascita (serve a verificare l'età minima e le fasce d'età degli eventi);</li>
+<li>numero di telefono, se scegli di inserirlo (facoltativo);</li>
+<li>foto del profilo, se scegli di inserirla (facoltativa);</li>
+<li>biografia, se scegli di inserirla (facoltativa);</li>
+<li>eventi che crei, con luogo, data, descrizione e foto di copertina;</li>
+<li>eventi a cui partecipi;</li>
+<li>messaggi che invii, sia privati sia nella chat globale;</li>
+<li>valutazioni e commenti che lasci agli eventi;</li>
+<li>elenco di amicizie, richieste inviate/ricevute e utenti bloccati;</li>
+<li>prenotazioni nei locali: data, numero di persone, tavolo assegnato, eventuali note e segnalazioni di allergie che scrivi tu;</li>
+<li>pagamenti: importo, data, esito e identificativo della transazione.</li>
+</ul>
+<p>L'accesso è gestito dal servizio di autenticazione di Supabase: la password viene verificata sui suoi server e non è conservata in chiaro da nessuna parte. L'app non ne conserva alcuna copia sul tuo dispositivo.</p>
+<p>Non raccogliamo la tua posizione: GoOut non chiede né usa il GPS.</p>
+<h2>2-bis. LA VERIFICA DELLA FOTO CON IL SELFIE (FACOLTATIVA)</h2>
+<p>Puoi mettere come foto del profilo qualunque immagine, senza controlli.</p>
+<p>Se vuoi, puoi in più farti un selfie per ottenere il contrassegno di foto verificata: l'app guarda se il viso del selfie è lo stesso della foto che hai scelto. Serve a chi preferisce mostrare che dietro il profilo c'è davvero quella persona, su un'app dove poi ci si incontra dal vivo.</p>
+<p>È una scelta tua e non blocca niente: senza selfie la foto resta, il profilo funziona e nessuna parte dell'app ti viene preclusa.</p>
+<p>Come funziona, in concreto:</p>
+<ul>
+<li>il selfie viene scattato con la fotocamera del telefono e resta sul telefono. Non viene inviato a noi, né a Google, né a nessun altro;</li>
+<li>il confronto avviene interamente sul tuo dispositivo, senza connessione a servizi esterni;</li>
+<li>il selfie viene cancellato subito dopo il controllo, che sia andato bene o male. Non ne resta copia da nessuna parte;</li>
+<li>non conserviamo né creiamo alcun modello del tuo viso, né alcuna misura ricavata da esso.</li>
+</ul>
+<p>Sui nostri server viene scritta una sola informazione: che la tua foto risulta verificata, e in che giorno. Nient'altro.</p>
+<p>L'immagine di un volto è un dato biometrico ai sensi dell'articolo 9 del GDPR quando viene usata per identificare una persona. Poiché il trattamento avviene solo sul tuo dispositivo, in memoria e per pochi istanti, e non conserviamo alcun dato biometrico, non costituiamo alcun archivio di dati biometrici. Il permesso di accesso alla fotocamera viene chiesto al momento e si può negare: in quel caso non potrai impostare una foto del profilo, ma tutto il resto di GoOut continua a funzionare.</p>
+<p>Puoi togliere la tua foto del profilo quando vuoi, senza fare nessun selfie.</p>
+<h2>2-ter. PAGAMENTI E PRENOTAZIONI</h2>
+<p>Quando prenoti un tavolo pagando in anticipo, il pagamento è gestito da Stripe Payments Europe Ltd.</p>
+<p>I dati della tua carta non passano da GoOut e non vengono conservati sui nostri server: li raccoglie e li custodisce direttamente Stripe, sulla propria pagina di pagamento. Di quel pagamento a noi arrivano l'importo, la data, l'esito, il tipo di strumento usato (per esempio "Visa ****4242" o "Apple Pay") e un codice identificativo della transazione.</p>
+<p>Il locale presso cui hai prenotato vede il tuo nome, il numero di persone, l'orario, le note e le allergie che hai indicato, e l'importo pagato. Non vede la tua email, il tuo telefono né i dati della carta.</p>
+<p>Se non ti presenti a una prenotazione, il locale può registrare l'assenza: restano scritti l'ora della prenotazione, il tavolo che ti era stato assegnato e il momento della segnalazione. Servono a stabilire chi ha ragione se contesti l'addebito, e li conserviamo per il tempo in cui una contestazione è possibile.</p>
+<h2>2-quater. NOTIFICHE SUL TELEFONO</h2>
+<p>Se accetti di ricevere le notifiche, il telefono genera un identificativo tecnico che ci permette di recapitartele. Non è il tuo numero e non ti identifica fuori dall'app: sparisce quando disinstalli l'app o revochi il permesso.</p>
+<p>Le notifiche riguardano cose che hai chiesto o che ti riguardano: un messaggio, una prenotazione, un posto che si è liberato in una serata per cui ti sei messo in lista d'attesa.</p>
+<p>Se ti metti in lista d'attesa per una serata, conserviamo il locale, la data e quante persone cercavi, finché quella serata non è passata o finché non esci dalla lista. Serve solo ad avvisarti se qualcuno disdice, e puoi uscirne quando vuoi da Le mie prenotazioni.</p>
+<p>Non usiamo i tuoi dati per farti pubblicità di terzi.</p>
+<h2>3. DOVE FINISCONO I DATI</h2>
+<p>I dati sono conservati sui server di Supabase (Supabase Inc.), che fornisce l'infrastruttura di database e archiviazione su cui GoOut funziona. Supabase agisce come responsabile del trattamento per conto del titolare. Le comunicazioni fra l'app e il server sono cifrate (HTTPS).</p>
+<p>La password non viene mai trasmessa né conservata in chiaro: la verifica avviene sul server, che restituisce all'app un token temporaneo. Sul tuo dispositivo non resta alcuna copia della password, in nessuna forma.</p>
+<p>Oltre a Supabase, GoOut si appoggia a due altri fornitori, ciascuno solo per quello che serve:</p>
+<ul>
+<li>Stripe Payments Europe Ltd — incassa i pagamenti e li gira ai locali. È lui a raccogliere i dati della tua carta, che a noi non arrivano mai. Stripe è titolare autonomo per gli obblighi antiriciclaggio e fiscali che la legge gli impone.</li>
+<li>Google (Firebase Cloud Messaging) — recapita le notifiche al telefono. Riceve l'identificativo tecnico del dispositivo e il testo della notifica, non i tuoi dati di profilo.</li>
+</ul>
+<p>I tuoi dati non vengono venduti né condivisi con terze parti a scopo commerciale o pubblicitario.</p>
+<p>Altra comunicazione tecnica: l'app scarica il carattere tipografico usato nell'interfaccia dai server di Google Fonts al primo avvio. In quella richiesta Google riceve l'indirizzo IP del dispositivo, come in qualunque visita a un sito web. Non vengono inviati né il tuo nome né altri tuoi dati.</p>
+<h2>4. PERCHÉ LI TRATTIAMO E CON QUALE BASE GIURIDICA</h2>
+<ul>
+<li>Per farti creare un account e accedere — esecuzione del contratto (art. 6.1.b GDPR).</li>
+<li>Per farti creare eventi, iscriverti e scrivere agli altri utenti — esecuzione del contratto.</li>
+<li>Per verificare l'età minima e le fasce d'età degli eventi — obbligo di legge e legittimo interesse.</li>
+<li>Per prevenire abusi e moderare i contenuti — legittimo interesse (art. 6.1.f GDPR).</li>
+<li>Per incassare le prenotazioni e girare il denaro ai locali — esecuzione del contratto (art. 6.1.b GDPR).</li>
+<li>Per conservare la prova di una prenotazione e di una eventuale assenza — legittimo interesse a difendersi da contestazioni di pagamento (art. 6.1.f GDPR).</li>
+<li>Per mandarti le notifiche dell'app e gli avvisi delle liste d'attesa — consenso, che puoi revocare dalle impostazioni del telefono (art. 6.1.a GDPR).</li>
+<li>I dati facoltativi (telefono, foto, biografia) sono trattati sulla base del tuo consenso: sei libero di non inserirli.</li>
+</ul>
+<h2>5. CHI PUÒ VEDERE I TUOI DATI</h2>
+<ul>
+<li>Gli altri utenti vedono il tuo username, nome e cognome, foto del profilo e biografia, gli eventi che organizzi e a cui partecipi, e i messaggi che invii loro.</li>
+<li>I messaggi scritti nella chat globale sono visibili a tutti gli utenti iscritti.</li>
+<li>Il tuo numero di telefono non è mai mostrato agli altri utenti, a meno che tu non attivi l'apposita opzione nelle Impostazioni.</li>
+<li>Lo Staff dell'applicazione dispone di un pannello di amministrazione con cui può consultare, modificare ed eliminare i profili, gli eventi e i messaggi — inclusi quelli privati. Questo accesso serve alla moderazione e alla sicurezza del servizio. Se non accetti questa condizione, non usare l'app.</li>
+</ul>
+<h2>6. PER QUANTO TEMPO</h2>
+<p>I dati restano finché non elimini l'account. Da Impostazioni → Elimina Account puoi cancellare in modo definitivo il profilo, i messaggi, gli eventi organizzati, le amicizie, le valutazioni e gli avvisi. L'operazione è immediata e non è reversibile.</p>
+<p>Nota tecnica: dopo l'eliminazione resta registrato, nel solo sistema di autenticazione, il tuo indirizzo email. Serve a impedire che l'account venga ricreato per errore e non è collegato ad alcun altro dato. Puoi chiederne la rimozione scrivendo a <a href="mailto:sales@gruppogoout.com">sales@gruppogoout.com</a>.</p>
+<h2>7. I TUOI DIRITTI</h2>
+<p>Puoi in ogni momento accedere ai tuoi dati, correggerli, cancellarli, limitarne il trattamento, opporti e revocare il consenso ai dati facoltativi. Nell'app puoi farlo direttamente dalla schermata Profilo e da Impostazioni. Per ogni altra richiesta scrivi a <a href="mailto:sales@gruppogoout.com">sales@gruppogoout.com</a>.</p>
+<p>Hai inoltre il diritto di presentare reclamo al Garante per la protezione dei dati personali (www.garanteprivacy.it).</p>
+<h2>8. ETÀ MINIMA</h2>
+<p>GoOut è riservata a chi ha compiuto almeno 18 anni. Non raccogliamo consapevolmente dati di minori di 18 anni.</p>
+<h2>9. NIENTE PUBBLICITÀ, NIENTE PROFILAZIONE</h2>
+<p>L'app non contiene pubblicità, non usa strumenti di analisi del comportamento, non traccia gli utenti fra app o siti diversi e non prende decisioni automatizzate sul tuo conto.</p>
+<h2>10. TRASFERIMENTI FUORI DALL'UNIONE EUROPEA</h2>
+<p>A seconda della regione scelta per il progetto Supabase, i dati possono essere conservati su server situati fuori dallo Spazio Economico Europeo. In tal caso il trasferimento avviene sulla base delle clausole contrattuali standard approvate dalla Commissione Europea.</p>
+<h2>11. MODIFICHE</h2>
+<p>Se questa informativa cambierà, la data in cima verrà aggiornata e la nuova versione sarà visibile in questa stessa schermata.</p>
+</section>
+</main>
+
+<footer>
+  Domenico Antonelli &mdash; <a href="mailto:sales@gruppogoout.com">sales@gruppogoout.com</a>
+</footer>
+</body>
+</html>
