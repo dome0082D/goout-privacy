@@ -1,0 +1,19 @@
+Le foto dei tre piani, quando le avrai.
+
+Salvale qui con questi nomi esatti:
+
+    flex.jpg
+    pro.jpg
+    max.jpg
+
+Vengono ritagliate a riempire un riquadro largo 230 e alto 108, quindi
+conviene che il soggetto stia al centro. Una foto quadrata o orizzontale
+va bene; una verticale viene tagliata sopra e sotto.
+
+Finche' non ci sono, i riquadri disegnano uno sfondo colorato con
+l'icona del piano. Non e' un ripiego brutto: si vede bene, e non c'e'
+nessun rettangolo vuoto ad aspettare.
+
+Cosa NON metterci: foto stock di gente che ride intorno a un tavolo. Si
+riconoscono, e fanno sembrare finto tutto il resto dell'app. Meglio le
+tue sale vere, anche imperfette.

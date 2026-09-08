@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!--
+    Il percorso da cui la versione web viene servita. Non si scrive qui:
+    lo mette `flutter build web --base-href /app/`, perche' GoOut sul sito
+    sta sotto /app/ e non alla radice. Costruita senza quell'argomento,
+    l'app cerca i propri file un livello piu' su e resta sulla schermata
+    di caricamento senza dire perche'.
+  -->
+  <base href="/app/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Organizza una serata, trova chi ci viene, prenota il locale.">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="GoOut">
+  <meta name="theme-color" content="#FF6B4A">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>GoOut</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    /*
+      L'ATTESA
+
+      Il motore di GoOut sul web pesa alcuni megabyte, e finche' non e'
+      arrivato la pagina e' vuota. Su una connessione lenta sono diversi
+      secondi di schermo bianco, che si leggono come «non funziona».
+
+      Qui non c'e' niente di finto: nessuna barra che avanza da sola
+      fingendo di sapere a che punto siamo. C'e' il nome e una riga che
+      dice cosa sta succedendo. Sparisce da sola quando Flutter disegna
+      il primo fotogramma vero -- non dopo un tempo deciso a caso.
+    */
+    html, body { height: 100%; margin: 0; background: #FBF7F4; }
+    #attesa {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 14px;
+      background: #FBF7F4; color: #6b625d; z-index: 10;
+      font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            Helvetica, Arial, sans-serif;
+      transition: opacity .25s ease;
+    }
+    #attesa .nome {
+      font-size: 34px; font-weight: 700; letter-spacing: -1px; color: #FF6B4A;
+    }
+    #attesa .giro {
+      width: 26px; height: 26px; border-radius: 50%;
+      border: 3px solid #e8ddd4; border-top-color: #FF6B4A;
+      animation: gira .9s linear infinite;
+    }
+    @keyframes gira { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      #attesa .giro { animation-duration: 3s; }
+    }
+  </style>
+</head>
+<body>
+  <div id="attesa">
+    <div class="nome">GoOut</div>
+    <div class="giro"></div>
+    <div>Sto caricando l&rsquo;app&hellip;</div>
+  </div>
+
+  <script>
+    //  Il primo fotogramma disegnato da Flutter: e' l'unico segnale che
+    //  dice davvero «adesso si vede qualcosa».
+    window.addEventListener('flutter-first-frame', function () {
+      var a = document.getElementById('attesa');
+      if (!a) return;
+      a.style.opacity = '0';
+      setTimeout(function () { a.remove(); }, 260);
+    });
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

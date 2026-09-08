@@ -6,8 +6,9 @@
 <title>Uscire con qualcuno stasera &ndash; GoOut</title>
 <meta name="description" content="Trova eventi vicino a te, o creane uno. Gratuiti o con biglietto.">
 <meta name="theme-color" content="#f26c4f">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="icona-192.png">
+<link rel="icon" type="image/png" href="app/favicon.png">
+<link rel="apple-touch-icon" href="app/icons/Icon-192.png">
+<link rel="manifest" href="manifest.json">
 <style>
 
   :root {
@@ -136,9 +137,22 @@ scorrere. &Egrave; un posto dove qualcuno scrive &laquo;gioved&igrave;
 aperitivo in zona Navigli, siamo in quattro&raquo; e chi legge decide se
 esserci.</p>
 
-<p class="sottotasto">GoOut sta arrivando su Google Play. Su questa
-pagina comparir&agrave; il collegamento per scaricarla appena &egrave;
-pubblicata.</p>
+<div class="scelte">
+  <a class="tasto" href="app/">Apri GoOut nel browser</a>
+</div>
+<p class="sottotasto">Su Google Play non c&rsquo;&egrave; ancora: &egrave; in preparazione. Nel frattempo la versione web fa le stesse cose, e si pu&ograve; installare sul telefono qui sotto.</p>
+
+<div class="riquadro" id="installa" hidden>
+  <h3>Vuoi averla sul telefono?</h3>
+  <p id="installa-testo">GoOut si installa dal browser: diventa
+  un&rsquo;icona come le altre, si apre a schermo intero e non passa da
+  nessun negozio.</p>
+  <p><button class="tasto" id="installa-tasto" type="button" hidden>Installa
+  GoOut</button></p>
+  <p class="sottotasto" id="installa-mano">Se il tasto non compare: apri il
+  menu del browser e scegli <strong>&laquo;Installa app&raquo;</strong> —
+  su iPhone, <strong>Condividi &rarr; Aggiungi alla schermata Home</strong>.</p>
+</div>
 
 <h2>Cosa ci si fa</h2>
 <div class="cose">
@@ -166,6 +180,18 @@ pubblicata.</p>
     senza un evento in comune la conversazione non si apre.</p>
   </div>
 </div>
+
+<h2>Cosa cambia fra il browser e l&rsquo;app</h2>
+<p>Quasi niente, e le differenze che ci sono vengono da quello che un
+browser non pu&ograve; fare, non da una versione tenuta indietro apposta:</p>
+<ul>
+  <li>la <strong>verifica della foto con il selfie</strong> si fa solo
+  nell&rsquo;app: il riconoscimento del volto &egrave; una libreria di
+  Android e di iPhone, e lavora dentro il telefono. Nel browser il tasto non
+  c&rsquo;&egrave; — resta facoltativa comunque, non blocca niente;</li>
+  <li>le <strong>notifiche</strong> arrivano sull&rsquo;app. Nel browser no:
+  quando c&rsquo;&egrave; qualcosa di nuovo lo vedi aprendo GoOut.</li>
+</ul>
 
 <div class="riquadro">
   <h3>Prima di andarci</h3>
@@ -349,5 +375,54 @@ pubblicata.</p>
   Domenico Antonelli &mdash; <a href="mailto:sales@gruppogoout.com">sales@gruppogoout.com</a>
 </footer>
 
+<script>
+
+(function () {
+  var box = document.getElementById('installa');
+  var tasto = document.getElementById('installa-tasto');
+  var mano = document.getElementById('installa-mano');
+  if (!box || !tasto) return;
+
+  //  Se questa pagina gira gia' dentro l'app installata non c'e'
+  //  niente da proporre.
+  var dentro = (window.matchMedia &&
+                window.matchMedia('(display-mode: standalone)').matches) ||
+               window.navigator.standalone === true;
+  if (dentro) return;
+
+  box.hidden = false;
+
+  //  Un browser propone di installare solo a un sito che ha un
+  //  addetto ai servizi registrato. Questo non fa niente: sta in
+  //  ascolto delle richieste e le lascia passare. Non mette niente in
+  //  cache, cosi' non puo' servire una versione vecchia del sito.
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(function () {});
+  }
+
+  var invito = null;
+
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    invito = e;
+    tasto.hidden = false;
+    if (mano) mano.hidden = true;
+  });
+
+  tasto.addEventListener('click', function () {
+    if (!invito) return;
+    invito.prompt();
+    invito.userChoice.then(function () {
+      //  L'invito si puo' usare una volta sola.
+      invito = null;
+      tasto.hidden = true;
+      if (mano) mano.hidden = false;
+    });
+  });
+
+  window.addEventListener('appinstalled', function () { box.hidden = true; });
+})();
+
+</script>
 </body>
 </html>
