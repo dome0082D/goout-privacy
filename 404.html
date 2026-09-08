@@ -10,8 +10,8 @@
     LA PAGINA CHE RACCOGLIE GLI INVITI
 
     I link degli inviti hanno la forma gruppogoout.com/evento/<id>. Su
-    quel percorso non c'e' nessun file: sul sito ci sono solo privacy e
-    termini. GitHub Pages, quando non trova la pagina chiesta, serve
+    quel percorso non c'e' nessun file: il sito ha la pagina di GoOut,
+    la privacy, i termini e la cancellazione dell'account. GitHub Pages, quando non trova la pagina chiesta, serve
     questa — ed e' l'unico punto in cui possiamo intercettarli.
 
     Chi ci arriva puo' essere in tre situazioni diverse:
@@ -21,7 +21,10 @@
       • ha GoOut ma la verifica non e' andata a buon fine (succede se il
         file assetlinks non era raggiungibile quando ha installato):
         il tasto qui sotto prova goout:// e l'app si apre lo stesso;
-      • non ha GoOut: va al negozio.
+      • non ha GoOut: va alla pagina di casa. Prima il tasto mandava
+        al Play Store, dove GoOut non e' ancora pubblicata: chi lo
+        toccava si prendeva l'errore di Google. Quando esce, qui ci
+        torna l'indirizzo del negozio.
 
     Il salto a goout:// non e' automatico di proposito. Un browser che
     tenta di aprire un'app non installata mostra un errore di sistema
@@ -77,10 +80,10 @@
 <main>
   <div class="segno">G</div>
   <h1 id="titolo">Questo invito si apre in GoOut</h1>
-  <p id="spiega">Installa l'app: l'invito ti aspetta li dentro.</p>
+  <p id="spiega">L'invito ti aspetta dentro GoOut. L'app sta arrivando
+  su Google Play.</p>
 
-  <a class="tasto primo" id="negozio"
-     href="https://play.google.com/store/apps/details?id=com.GoOut.app">Scarica GoOut</a>
+  <a class="tasto primo" id="negozio" href="/">Scopri cos&rsquo;&egrave; GoOut</a>
   <a class="tasto dopo" id="apri" href="#" hidden>Ho gia l'app, aprila</a>
 
   <p class="nota">
