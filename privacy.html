@@ -104,8 +104,9 @@
   }
   footer a { color: var(--accento); }
 
-  .occhiello { font-size: 17px; color: var(--tenue); margin: 0 0 4px; }
+  .occhiello { font-size: 17px; color: var(--tenue); margin: 0 0 16px; }
   .sottotasto { color: var(--tenue); font-size: 14px; margin: 0 0 8px; }
+  .nota { color: var(--tenue); font-size: 13.5px; margin: 16px 0 0; }
   .riquadro {
     background: var(--sfondo); border: 1px solid var(--bordo);
     border-radius: 14px; padding: 16px 18px; margin: 18px 0 0;
@@ -123,7 +124,12 @@
     .hero h1 { font-size: 29px; }
     .hero .marchio { font-size: 25px; }
     section { padding: 19px 17px 22px; border-radius: 14px; }
-    .cose { grid-template-columns: 1fr; }
+    /* Restano due colonne anche sul telefono: le quattro voci sono una
+       riga ciascuna, e in colonna facevano scorrere per niente. */
+    .cose { gap: 10px; }
+    .cose > div { padding: 12px 13px; }
+    .cose h3 { font-size: 12.5px; }
+    .cose p { font-size: 13.5px; }
     .tasto { width: 100%; }
   }
 

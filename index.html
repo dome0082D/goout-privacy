@@ -111,8 +111,9 @@
   }
   footer a { color: var(--accento); }
 
-  .occhiello { font-size: 17px; color: var(--tenue); margin: 0 0 4px; }
+  .occhiello { font-size: 17px; color: var(--tenue); margin: 0 0 16px; }
   .sottotasto { color: var(--tenue); font-size: 14px; margin: 0 0 8px; }
+  .nota { color: var(--tenue); font-size: 13.5px; margin: 16px 0 0; }
   .riquadro {
     background: var(--sfondo); border: 1px solid var(--bordo);
     border-radius: 14px; padding: 16px 18px; margin: 18px 0 0;
@@ -130,7 +131,12 @@
     .hero h1 { font-size: 29px; }
     .hero .marchio { font-size: 25px; }
     section { padding: 19px 17px 22px; border-radius: 14px; }
-    .cose { grid-template-columns: 1fr; }
+    /* Restano due colonne anche sul telefono: le quattro voci sono una
+       riga ciascuna, e in colonna facevano scorrere per niente. */
+    .cose { gap: 10px; }
+    .cose > div { padding: 12px 13px; }
+    .cose h3 { font-size: 12.5px; }
+    .cose p { font-size: 13.5px; }
     .tasto { width: 100%; }
   }
 
@@ -159,37 +165,30 @@
 <main>
 <section>
 
-<p class="occhiello">GoOut serve a una cosa sola: far incontrare persone che
-avevano voglia di uscire la stessa sera. Non &egrave; una chat e non &egrave;
-un social da scorrere.</p>
+<p class="occhiello">Qualcuno scrive &laquo;gioved&igrave; aperitivo, siamo
+in quattro&raquo;. Chi legge decide se esserci.</p>
 
 <div class="cose">
   <div>
-    <h3>Trova qualcosa da fare</h3>
-    <p>Gli eventi in arrivo vicino a te. Apri quello che ti interessa e vedi
-    chi partecipa prima di decidere.</p>
+    <h3>Trova</h3>
+    <p>Gli eventi vicino a te. Vedi chi partecipa prima di decidere.</p>
   </div>
   <div>
-    <h3>Organizza il tuo</h3>
-    <p>Un titolo, un posto, un&rsquo;ora. Quante persone possono venire e, se
-    serve, una fascia d&rsquo;et&agrave;.</p>
+    <h3>Organizza</h3>
+    <p>Un titolo, un posto, un&rsquo;ora. Chi si iscrive lo vedi subito.</p>
   </div>
   <div>
-    <h3>Gratis o con biglietto</h3>
-    <p>Si paga sulle pagine sicure di Stripe: i dati della carta non passano
-    mai da GoOut.</p>
+    <h3>Gratis o a pagamento</h3>
+    <p>Si paga su Stripe: la carta non passa da GoOut.</p>
   </div>
   <div>
-    <h3>Parla con chi c&rsquo;&egrave;</h3>
-    <p>Scrivi a chi partecipa ai tuoi stessi eventi. Non a chiunque: senza un
-    evento in comune la conversazione non si apre.</p>
+    <h3>Scrivi</h3>
+    <p>A chi viene ai tuoi stessi eventi. Non a chiunque.</p>
   </div>
 </div>
 
 <div class="riquadro" id="installa" hidden>
-  <h3>Vuoi l&rsquo;icona sul telefono?</h3>
-  <p id="installa-testo">GoOut si installa dal browser: diventa
-  un&rsquo;icona come le altre e si apre a schermo intero.</p>
+  <h3>L&rsquo;icona sul telefono</h3>
   <p><button class="tasto" id="installa-tasto" type="button" hidden>Installa
   GoOut</button></p>
   <p class="sottotasto" id="installa-mano">Dal menu del browser,
@@ -198,19 +197,13 @@ un social da scorrere.</p>
 </div>
 <p class="sottotasto">Su Google Play sta arrivando: qui comparir&agrave; il collegamento appena &egrave; pubblicata.</p>
 
-<div class="riquadro">
-  <h3>Prima di andarci</h3>
-  <p>GoOut mette in contatto le persone, ma non organizza gli eventi e non
-  verifica chi li crea. Al primo incontro con qualcuno che non conosci,
-  scegli un luogo pubblico e avvisa una persona di fiducia di dove vai.</p>
-</div>
+<p class="nota">GoOut non organizza gli eventi e non verifica chi li crea. Al
+primo incontro con uno sconosciuto scegli un luogo pubblico e dillo a
+qualcuno di cui ti fidi.</p>
 
-<div class="riquadro">
-  <h3>Hai un locale?</h3>
-  <p>I locali ricevono prenotazioni con il tavolo gi&agrave; assegnato e
-  l&rsquo;incasso sul proprio conto Stripe. Scrivi a
-  <a href="mailto:sales@gruppogoout.com">sales@gruppogoout.com</a>.</p>
-</div>
+<p class="nota">Hai un locale? Prenotazioni col tavolo assegnato e
+l&rsquo;incasso sul tuo conto Stripe:
+<a href="mailto:sales@gruppogoout.com">sales@gruppogoout.com</a></p>
 
 </section>
 </main>
