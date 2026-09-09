@@ -84,7 +84,7 @@
   su Google Play.</p>
 
   <a class="tasto primo" id="negozio" href="/">Scopri cos&rsquo;&egrave; GoOut</a>
-  <a class="tasto dopo" id="apri" href="#" hidden>Ho gia l'app, aprila</a>
+  <a class="tasto dopo" id="apri" href="#" hidden>Ho gi&agrave; l'app, aprila</a>
 
   <p class="nota">
     <a href="/privacy.html">Privacy</a> &middot;
@@ -103,6 +103,7 @@
   var titolo = document.getElementById('titolo');
   var spiega = document.getElementById('spiega');
   var apri = document.getElementById('apri');
+  var negozio = document.getElementById('negozio');
 
   var noti = { evento: 'evento', eventi: 'evento', locale: 'locale',
                locali: 'locale', ristorante: 'locale' };
@@ -117,7 +118,7 @@
 
   if (tipo === 'locale') {
     titolo.textContent = 'Questo locale si apre in GoOut';
-    spiega.textContent = 'Installa l\u2019app per vedere la scheda e le serate in programma.';
+    spiega.textContent = 'La scheda del locale e le serate in programma stanno dentro GoOut.';
   }
 
   // Chi ha gia' l'app: lo schema privato funziona anche senza che
@@ -127,10 +128,14 @@
     apri.hidden = false;
   }
 
-  // Su computer il negozio non serve a niente: nessuno installa
-  // un'app Android da li'.
+  // Da computer, l'invito si apre lo stesso: GoOut gira nel browser
+  // sotto /app. Qui c'era scritto \u00abAprilo dal telefono: GoOut e' un'app
+  // per cellulare\u00bb, che era vero prima che la versione web esistesse e
+  // adesso manda via una persona che poteva restare.
   if (!/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-    spiega.textContent = 'Aprilo dal telefono: GoOut e\u2019 un\u2019app per cellulare.';
+    spiega.textContent = 'Sei da computer: GoOut si apre anche nel browser.';
+    negozio.textContent = 'Apri GoOut nel browser';
+    negozio.href = '/app/';
   }
 })();
 </script>
