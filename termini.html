@@ -56,6 +56,16 @@
   .hero .sotto { margin: 14px 0 0; color: rgba(255,255,255,.9); font-size: 14.5px; }
   .hero .sotto a { color: #fff; }
 
+  /* La fascia in cima alle pagine che non sono la home: dice dove sei,
+     e riporta a casa. */
+  header.stretta {
+    background: var(--accento); text-align: center; padding: 18px 20px;
+  }
+  header.stretta a {
+    color: #fff; text-decoration: none; font-size: 25px; font-weight: 800;
+    letter-spacing: -.7px;
+  }
+
   .tasto {
     display: inline-flex; align-items: center; justify-content: center; gap: 9px;
     background: var(--accento); color: #fff; text-decoration: none;
@@ -136,6 +146,10 @@
 </style>
 </head>
 <body>
+
+<header class="stretta">
+  <a href="index.html">GoOut</a>
+</header>
 
 <nav>
   <a href="index.html">L&rsquo;app</a>
