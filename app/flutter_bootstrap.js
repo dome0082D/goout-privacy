@@ -35,8 +35,28 @@ if (!window._flutter) {
 }
 _flutter.buildConfig = {"engineRevision":"c416acfeb8126e097f758c664aaa3da929e27da0","builds":[{"compileTarget":"dart2js","renderer":"canvaskit","mainJsPath":"main.dart.js"},{}]};
 
-_flutter.loader.load({
-  serviceWorkerSettings: {
-    serviceWorkerVersion: "2173359236" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */
-  }
-});
+
+//  ── L'AVVIO DELLA VERSIONE WEB, SENZA QUATTRO SECONDI DI NIENTE ──
+//
+//  Senza questo file Flutter ne genera uno suo, che chiama
+//
+//      _flutter.loader.load({ serviceWorkerSettings: { ... } })
+//
+//  e con quell'impostazione il caricatore registra il service worker di
+//  Flutter e lo ASPETTA -- fino a 4000 millisecondi -- prima di
+//  cominciare a scaricare l'app. Solo che quel service worker e'
+//  deprecato e non fa niente: appena parte si disinstalla da solo. Quindi
+//  a ogni visita si registrava, si toglieva, e il caricatore restava
+//  fermo ad aspettarlo.
+//
+//  Misurato il 14 settembre 2026 su gruppogoout.com/app: la pagina era
+//  pronta a 0,2 secondi e main.dart.js cominciava a scaricarsi a 4,4. In
+//  locale, dove la rete non conta, a 4,2. Quattro secondi di «Sto
+//  caricando l'app...» a ogni apertura, per un pezzo che si butta via da
+//  solo -- e sul sito arriva la maggior parte degli iscritti.
+//
+//  Senza impostazioni il caricatore non registra nessun service worker e
+//  parte subito. Chi ha ancora quello vecchio installato non perde
+//  niente: si disinstalla da solo alla prima occasione, come ha sempre
+//  fatto.
+_flutter.loader.load();
