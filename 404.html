@@ -21,10 +21,13 @@
       • ha GoOut ma la verifica non e' andata a buon fine (succede se il
         file assetlinks non era raggiungibile quando ha installato):
         il tasto qui sotto prova goout:// e l'app si apre lo stesso;
-      • non ha GoOut: va alla pagina di casa. Prima il tasto mandava
-        al Play Store, dove GoOut non e' ancora pubblicata: chi lo
-        toccava si prendeva l'errore di Google. Quando esce, qui ci
-        torna l'indirizzo del negozio.
+      • non ha GoOut: va su Google Play, dove GoOut c'e' dal 14
+        settembre 2026. Il link del negozio porta con se' l'invito
+        (`referrer=evento=<id>`): Play lo consegna all'app alla prima
+        apertura, e la serata si apre da sola. Fino al 16 settembre qui
+        c'era scritto che l'app «sta arrivando» e il tasto mandava alla
+        pagina di casa: chi era stato invitato si iscriveva e poi doveva
+        ritrovarsi la serata da solo.
 
     Il salto a goout:// non e' automatico di proposito. Un browser che
     tenta di aprire un'app non installata mostra un errore di sistema
@@ -80,10 +83,11 @@
 <main>
   <div class="segno">G</div>
   <h1 id="titolo">Questo invito si apre in GoOut</h1>
-  <p id="spiega">L'invito ti aspetta dentro GoOut. L'app sta arrivando
-  su Google Play.</p>
+  <p id="spiega">Installa GoOut: l&rsquo;invito ti aspetta dentro, e appena
+  apri l&rsquo;app ti ritrovi sulla serata.</p>
 
-  <a class="tasto primo" id="negozio" href="/">Scopri cos&rsquo;&egrave; GoOut</a>
+  <a class="tasto primo" id="negozio"
+     href="https://play.google.com/store/apps/details?id=com.GoOut.app">Installa GoOut</a>
   <a class="tasto dopo" id="apri" href="#" hidden>Ho gi&agrave; l'app, aprila</a>
 
   <p class="nota">
@@ -128,14 +132,25 @@
     apri.hidden = false;
   }
 
+  // Chi l'app non ce l'ha: si installa, e l'invito arriva insieme
+  // all'installazione.
+  //
+  // Google Play conserva il parametro `referrer` e lo consegna all'app
+  // alla prima apertura: e' l'unico modo di sapere, dopo l'installazione,
+  // per quale serata quella persona era venuta. Senza, si finiva sulla
+  // home a cercarla in mezzo alle altre, e quasi nessuno lo fa.
+  if (tipo === 'evento' && id) {
+    negozio.href += '&referrer=' + encodeURIComponent('evento=' + id);
+  }
+
   // Da computer, l'invito si apre lo stesso: GoOut gira nel browser
-  // sotto /app. Qui c'era scritto \u00abAprilo dal telefono: GoOut e' un'app
-  // per cellulare\u00bb, che era vero prima che la versione web esistesse e
-  // adesso manda via una persona che poteva restare.
+  // sotto /app, e la serata viaggia nell'indirizzo.
   if (!/Android|iPhone|iPad/i.test(navigator.userAgent)) {
     spiega.textContent = 'Sei da computer: GoOut si apre anche nel browser.';
     negozio.textContent = 'Apri GoOut nel browser';
-    negozio.href = '/app/';
+    negozio.href = (tipo === 'evento' && id)
+      ? '/app/?evento=' + encodeURIComponent(id)
+      : '/app/';
   }
 })();
 </script>
