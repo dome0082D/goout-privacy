@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Torna su GoOut &ndash; GoOut</title>
+<meta name="description" content="La pagina che riporta nell'app dopo un passaggio su Stripe.">
+<meta name="theme-color" content="#f26c4f">
+<link rel="icon" type="image/png" href="app/favicon.png">
+<link rel="apple-touch-icon" href="app/icons/Icon-192.png">
+<style>
+
+  :root {
+    color-scheme: light;
+    --accento: #f26c4f;
+    --testo: #1a1614;
+    --tenue: #6b625d;
+    --sfondo: #faf6f2;
+    --carta: #ffffff;
+    --bordo: #e8ddd4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--sfondo); color: var(--testo);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+  }
+
+  /* ── LA FOTO GRANDE, COL TASTO DENTRO ─────────────────────
+     Il tasto per entrare sta sopra la foto, non sotto: e' la prima
+     cosa che si vede aprendo il sito, senza dover scorrere. */
+  .hero {
+    position: relative; min-height: 74vh; display: flex;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 60px 22px; overflow: hidden;
+  }
+  .hero .foto {
+    position: absolute; inset: 0; background-size: cover;
+    background-position: center; z-index: 0;
+  }
+  /* Il velo scuro non e' decorazione: sopra una foto chiara il testo
+     bianco sparisce, e la frase e' la cosa che deve leggersi. */
+  .hero .velo {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(20,14,10,.30), rgba(20,14,10,.70));
+  }
+  .hero .dentro { position: relative; z-index: 2; max-width: 560px; }
+  .hero .marchio {
+    margin: 0 0 20px; font-size: 30px; font-weight: 800; color: #fff;
+    letter-spacing: -.6px;
+  }
+  .hero h1 {
+    margin: 0 0 28px; font-size: 40px; line-height: 1.15; color: #fff;
+    letter-spacing: -1.2px; text-shadow: 0 2px 18px rgba(0,0,0,.35);
+  }
+  .hero .sotto { margin: 14px 0 0; color: rgba(255,255,255,.9); font-size: 14.5px; }
+  .hero .sotto a { color: #fff; }
+
+  /* La fascia in cima alle pagine che non sono la home: dice dove sei,
+     e riporta a casa. */
+  header.stretta {
+    background: var(--accento); text-align: center; padding: 18px 20px;
+  }
+  header.stretta a {
+    color: #fff; text-decoration: none; font-size: 25px; font-weight: 800;
+    letter-spacing: -.7px;
+  }
+
+  .tasto {
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    background: var(--accento); color: #fff; text-decoration: none;
+    font-weight: 700; font-size: 17px; padding: 16px 34px; border-radius: 14px;
+    border: 2px solid var(--accento); cursor: pointer;
+    font-family: inherit; line-height: 1.2;
+  }
+  .tasto:hover { filter: brightness(1.07); }
+  .tasto.chiaro { background: transparent; border-color: rgba(255,255,255,.75); }
+
+  nav {
+    position: sticky; top: 0; z-index: 5; background: var(--carta);
+    border-bottom: 1px solid var(--bordo); text-align: center; padding: 11px;
+  }
+  nav a {
+    color: var(--testo); text-decoration: none; font-weight: 600;
+    font-size: 14.5px; padding: 8px 14px; border-radius: 10px;
+    display: inline-block;
+  }
+  nav a:hover { background: var(--sfondo); }
+
+  main { max-width: 820px; margin: 0 auto; padding: 26px 20px 60px; }
+  section {
+    background: var(--carta); border: 1px solid var(--bordo);
+    border-radius: 18px; padding: 24px 26px 28px; margin-bottom: 22px;
+  }
+  section > h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -.3px; }
+  .data { color: var(--tenue); font-size: 14px; margin: 0 0 22px; }
+  h2 {
+    font-size: 16.5px; margin: 28px 0 8px; padding-top: 18px;
+    border-top: 1px solid var(--bordo); color: var(--accento);
+  }
+  section > h2:first-of-type { border-top: none; padding-top: 0; margin-top: 14px; }
+  h3 { font-size: 15px; margin: 18px 0 6px; }
+  p { margin: 0 0 12px; overflow-wrap: break-word; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accento); }
+  hr { border: 0; border-top: 1px solid var(--bordo); margin: 24px 0; }
+  table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--bordo); padding: .5rem .7rem; text-align: left; }
+  th { background: var(--sfondo); }
+  footer {
+    text-align: center; color: var(--tenue); font-size: 13.5px;
+    padding: 0 20px 44px;
+  }
+  footer a { color: var(--accento); }
+
+  .occhiello { font-size: 17px; color: var(--tenue); margin: 0 0 16px; }
+  .sottotasto { color: var(--tenue); font-size: 14px; margin: 0 0 8px; }
+  .nota { color: var(--tenue); font-size: 13.5px; margin: 16px 0 0; }
+  .riquadro {
+    background: var(--sfondo); border: 1px solid var(--bordo);
+    border-radius: 14px; padding: 16px 18px; margin: 18px 0 0;
+  }
+  .riquadro h3 { margin-top: 0; }
+  .riquadro p:last-child { margin-bottom: 0; }
+  .cose { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; margin: 6px 0 0; }
+  .cose > div { background: var(--sfondo); border-radius: 14px; padding: 15px 17px; }
+  .cose h3 { margin: 0 0 5px; color: var(--accento); font-size: 13.5px;
+             text-transform: uppercase; letter-spacing: .04em; }
+  .cose p { margin: 0; font-size: 14.5px; }
+
+  @media (max-width: 600px) {
+    .hero { min-height: 68vh; padding: 48px 18px; }
+    .hero h1 { font-size: 29px; }
+    .hero .marchio { font-size: 25px; }
+    section { padding: 19px 17px 22px; border-radius: 14px; }
+    /* Restano due colonne anche sul telefono: le quattro voci sono una
+       riga ciascuna, e in colonna facevano scorrere per niente. */
+    .cose { gap: 10px; }
+    .cose > div { padding: 12px 13px; }
+    .cose h3 { font-size: 12.5px; }
+    .cose p { font-size: 13.5px; }
+    .tasto { width: 100%; }
+  }
+
+</style>
+</head>
+<body>
+
+<header class="stretta">
+  <a href="index.html">GoOut</a>
+</header>
+
+<nav>
+  <a href="index.html">L&rsquo;app</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="termini.html">Termini</a>
+  <a href="cancella-account.html">Cancellare l&rsquo;account</a>
+</nav>
+
+<main>
+<section id="ritorno">
+
+<div class="ritorno">
+  <div class="segno" id="segno">&#10003;</div>
+  <h1 id="titolo">Torna su GoOut</h1>
+  <p class="sub" id="sotto">Puoi chiudere questa pagina.</p>
+  <a class="tasto" href="goout://ritorno">Torna su GoOut</a>
+</div>
+<style>
+  .ritorno { text-align: center; padding: 8px 0 24px; }
+  .ritorno .segno {
+    width: 74px; height: 74px; margin: 0 auto 20px;
+    border-radius: 50%; background: #f26c4f; color: #fff;
+    font-size: 36px; line-height: 74px;
+  }
+  .ritorno h1 { margin: 0 0 10px; }
+  .ritorno .sub { margin: 0 auto 26px; max-width: 30em; }
+  .ritorno .tasto {
+    display: inline-block; padding: 15px 30px; border-radius: 14px;
+    background: #f26c4f; color: #fff; text-decoration: none;
+    font-weight: 700;
+  }
+</style>
+<script>
+//  Il messaggio arriva nell'indirizzo, che lo mette la funzione che ci
+//  ha mandati qui. Se manca o non si riconosce resta quello scritto
+//  nell'HTML qui sopra: «Torna su GoOut», che e' vero in tutti i casi.
+(function () {
+  var dett = {
+    'pagamento-ok': ['✓', 'Il tuo biglietto è confermato.',
+      'Torna su GoOut: troverai la partecipazione già registrata.'],
+    'pagamento-no': ['—', 'Non è stato addebitato nulla.',
+      'Puoi riprovare quando vuoi dalla scheda dell’evento.'],
+    'stripe-ok': ['✓', 'Hai completato la procedura con Stripe.',
+      'La verifica può richiedere qualche minuto. Quando sarà conclusa potrai vendere biglietti.'],
+    'stripe-no': ['—', 'Il collegamento non è stato completato.',
+      'Riapri la procedura da GoOut, in Profilo, per riprendere da dove eri.'],
+    'carta-ok': ['✓', 'Carta aggiunta',
+      'Torna su GoOut: la trovi fra i tuoi metodi di pagamento, e comparirà già pronta alla prossima cassa.'],
+    'carta-no': ['—', 'Non hai aggiunto niente',
+      'Nessuna carta è stata registrata e non è stato addebitato niente. Puoi riprovare quando vuoi.']
+  };
+  var q = new URLSearchParams(location.search).get('m');
+  var d = dett[q];
+  if (!d) return;
+  document.getElementById('segno').innerHTML = d[0];
+  document.getElementById('titolo').textContent = d[1];
+  document.getElementById('sotto').textContent = d[2];
+  document.title = d[1] + ' – GoOut';
+})();
+</script>
+
+</section>
+</main>
+
+<footer>
+  Domenico Antonelli &mdash; <a href="mailto:sales@gruppogoout.com">sales@gruppogoout.com</a>
+</footer>
+</body>
+</html>
