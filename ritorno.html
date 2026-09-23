@@ -166,6 +166,7 @@
   <h1 id="titolo">Torna su GoOut</h1>
   <p class="sub" id="sotto">Puoi chiudere questa pagina.</p>
   <a class="tasto" href="goout://ritorno">Torna su GoOut</a>
+  <a class="tasto secondo" href="https://gruppogoout.com/app/">Continua nel browser</a>
 </div>
 <style>
   .ritorno { text-align: center; padding: 8px 0 24px; }
@@ -180,6 +181,13 @@
     display: inline-block; padding: 15px 30px; border-radius: 14px;
     background: #f26c4f; color: #fff; text-decoration: none;
     font-weight: 700;
+  }
+  /*  La seconda strada, per chi sta pagando dal browser e l'app non
+      ce l'ha: il tasto qui sopra, da un computer, non fa niente. */
+  .ritorno .secondo {
+    display: block; margin: 12px auto 0; max-width: 18em;
+    background: transparent; color: #f26c4f;
+    border: 1px solid rgba(242,108,79,.45);
   }
 </style>
 <script>
