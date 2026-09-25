@@ -207,7 +207,18 @@
     'carta-ok': ['✓', 'Carta aggiunta',
       'Torna su GoOut: la trovi fra i tuoi metodi di pagamento, e comparirà già pronta alla prossima cassa.'],
     'carta-no': ['—', 'Non hai aggiunto niente',
-      'Nessuna carta è stata registrata e non è stato addebitato niente. Puoi riprovare quando vuoi.']
+      'Nessuna carta è stata registrata e non è stato addebitato niente. Puoi riprovare quando vuoi.'],
+    //  Un abbonamento non e' un biglietto: non c'e' nessuna serata a
+    //  cui ci si e' iscritti, e il livello lo accende Stripe quando
+    //  conferma di aver incassato -- non l'app, e non subito.
+    'abbonamento-ok': ['✓', 'L’abbonamento è attivo.',
+      'Torna su GoOut: appena Stripe conferma l’incasso trovi tutto acceso. Di solito ci vuole qualche secondo.'],
+    'abbonamento-no': ['—', 'Non è stato addebitato nulla.',
+      'Nessun abbonamento è partito e niente è cambiato. Puoi riprendere quando vuoi.'],
+    'prenotazione-ok': ['✓', 'La prenotazione è confermata.',
+      'Torna su GoOut: la trovi fra le tue prenotazioni, con il locale e l’ora.'],
+    'prenotazione-no': ['—', 'Non è stato addebitato nulla.',
+      'Il tavolo non è stato prenotato. Puoi riprovare dal menù del locale.']
   };
   var q = new URLSearchParams(location.search).get('m');
   var d = dett[q];
