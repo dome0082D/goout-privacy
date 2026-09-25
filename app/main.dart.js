@@ -155792,7 +155792,7 @@ aSl(){var s,r,q,p,o,n,m=this,l=null,k=m.gamm(),j=m.c
 j.toString
 j=A.dx(j)
 s=t.p
-r=A.b([B.asb],s)
+r=A.b([B.asc],s)
 q=m.a.c
 if(!(q.go&&q.id&&q.fx))B.f.v(r,A.b([B.ad,B.bs_],s))
 q=m.a.c.f
@@ -158328,7 +158328,7 @@ else q=!1
 if(q)B.f.v(r,A.b([i.yZ(A.b([i.aou(B.m9,new A.bDW(a),"Quanti sono e chi sono. Per il pannello completo e per organizzare serate serve il livello VIP.","Gli iscritti")],s),"Host"),B.aI],s))
 q=i.a.d
 p=!q.x
-if(!p||q.y||q.Q){o=!p||q.y?"Moderazione":"Host"
+if(!p||q.y||q.Q){o=!p||q.y?"Moderazione":"Host VIP"
 n=!p||q.y?B.Nw:B.mc
 m=!p||q.y?"Pannello Staff":"Pannello Host"
 q=!p||q.y?"Utenti, locali, segnalazioni, rimborsi":"Utenti, avvisi, parole vietate, locali ed eventi. Guardi e basta."
@@ -160698,7 +160698,7 @@ if(k.r)i=A.aU(new A.ds(64,j,j),j,j)
 else{s=k.w
 if(s!=null)i=A.aU(new A.H(B.bY,A.d(s,j,j,j,j,j,j,B.a8,j,j),j),j,j)
 else{s=A.dx(a)
-r=A.b([B.asa],f)
+r=A.b([B.asb],f)
 q=k.e.length
 p=i.a
 if(q===0){i=p.w
@@ -163552,7 +163552,7 @@ else if(h.f==null)n="Metti il punto sulla mappa (facoltativo)"
 else n=h.w?"Punto trovato dall'indirizzo \u2014 tocca per correggerlo":"Punto scelto sulla mappa \u2014 tocca per cambiarlo"
 n=A.d(n,g,g,g,g,g,g,g,g,g)
 i=h.f!=null?f.a.e:B.B
-i=A.b([B.asd,r,B.f9,o,B.aI,q,p,B.ad,k,B.ad,A.aT(A.cH(j,n,l,A.cz(g,g,g,g,g,g,g,g,g,i,g,g,B.Dz,g,new A.bg(A.P(12),B.V),g,g,g,g,g)),g,1/0)],m)
+i=A.b([B.as9,r,B.f9,o,B.aI,q,p,B.ad,k,B.ad,A.aT(A.cH(j,n,l,A.cz(g,g,g,g,g,g,g,g,g,i,g,g,B.Dz,g,new A.bg(A.P(12),B.V),g,g,g,g,g)),g,1/0)],m)
 if(h.Q!=null){r=f.a
 B.f.v(i,A.b([B.aJ,A.a4(A.b([A.am(B.i7,r.e,g,17),B.b2,A.ae(A.d("L'indirizzo che hai scritto indica un altro punto.",g,g,g,g,g,A.m(g,g,r.w,g,g,g,g,g,g,g,g,13,g,g,B.t,g,g,!0,g,g,g,g,g,g,g,g),g,g,g),1),A.bc(B.afa,g,g,h.gbeA(),g,A.hK(g,g,g,g,g,g,g,g,g,g,g,f.a.e,g,g,g,g,g,g,g,g,g,g,g,g,g,B.dY))],m),B.u,B.q,B.r,0,g)],m))}i.push(B.aI)
 i.push(h.aPT(h.ax,B.EF,"Nome del locale o struttura"))
@@ -166322,7 +166322,7 @@ G(a){var s,r,q=this,p=null,o=$.q().a.c,n=t.p,m=A.cv(A.b([A.bz(p,p,p,B.d5,p,p,q.g
 if(q.x)n=A.aU(new A.ds(64,p,p),p,p)
 else{s=q.z
 if(s!=null)n=A.aU(new A.H(B.bY,A.d(s,p,p,p,p,p,p,B.a8,p,p),p),p,p)
-else{s=A.b([B.as9,B.a5],n)
+else{s=A.b([B.asa,B.a5],n)
 r=q.Q
 if(r.d)r=!(r.a||r.b)
 else r=!1
@@ -166474,7 +166474,7 @@ if(o.f)m=A.aU(new A.ds(64,n,n),n,n)
 else{s=o.r
 if(s!=null)m=A.aU(new A.H(B.bY,A.d(s,n,n,n,n,n,n,B.a8,n,n),n),n,n)
 else{s=A.dx(a)
-r=A.b([B.asc,B.ad],j)
+r=A.b([B.asd,B.ad],j)
 if(o.gaeQ().length!==0){q=A.b([o.apF("FERMI, QUALCOSA LI TRATTIENE",B.C)],j)
 p=o.gaeQ()
 B.f.v(q,new A.a6(p,new A.bwb(o),A.ad(p).i("a6<1,k>")))
@@ -170321,7 +170321,7 @@ r=s.c
 q=!r.x
 if(!q||r.y||r.Q){p=!q||r.y?B.Nw:B.mc
 o=l.a.e
-n=!q||r.y?"Staff":"Host"
+n=!q||r.y?"Staff":"Host VIP"
 r=!q||r.y?"Utenti, locali, segnalazioni, rimborsi":"Utenti, avvisi, locali ed eventi"
 k.push(s.akX(a,o,p,new A.aNX(s),r,n))}k.push(s.akX(a,l.a.w,B.NO,new A.aNY(s),"Tema, avvisi, privacy, esci o elimina il profilo","Impostazioni"))
 return A.de(!0,new A.H(B.Mh,A.J(k,B.u,m,B.q,B.a_,0,B.v),m),!0,B.ac,!0,!0)},
@@ -196265,16 +196265,16 @@ B.rJ=new A.a8c(0,"forward")
 B.N0=new A.a8c(1,"reverse")
 B.bnl=s(["Compili la scheda del tuo locale. Servono per forza: citt\xe0, un telefono, due righe di descrizione e una foto. Senza, il locale non entra.","Colleghi un conto per incassare. Te lo chiede Stripe, che raccoglie i dati dell'attivit\xe0 e l'IBAN. GoOut non li vede mai.","Se hai gi\xe0 un conto per i tuoi biglietti, l'app ti chiede se usare quello o aprirne uno nuovo per il locale. Usare quello che hai \xe8 pi\xf9 svelto: una verifica sola, un IBAN solo, un bonifico solo. Uno nuovo serve se il locale ha una partita IVA diversa dalla tua. Nell'app i due incassi restano separati comunque \u2014 una cena e una serata non si mescolano.","Lo Staff controlla che il locale sia davvero tuo, e che la scheda sia completa. Se manca qualcosa te lo dice, e appena la completi si approva.","Da quel momento compari nell'elenco, pubblichi i tuoi men\xf9, e chi prenota paga in app: l'incasso arriva sul tuo conto."],t.s)
 B.as8=new A.hB("Come funziona per i locali",B.bnl,"Iscriversi non costa niente. Con Go Flex paghi 1,70 \u20ac sul coperto di ogni prenotazione, pi\xf9 il 10% sui men\xf9 fissi: solo su chi GoOut ti porta davvero.",!0,null)
-B.b48=s(["Un messaggio che contiene una di queste parole non viene proprio inviato: chi scrive lo scopre subito, non dopo.",'Il controllo non si lascia ingannare dai trucchi: "c4zz0", "c-a-z-z-o" e "caaaazzo" vengono riconosciuti come la stessa parola.','Basta la radice. Mettendo "stupid" cadono anche "stupido", "stupida" e "stupidi".'],t.s)
-B.as9=new A.hB("Come funziona il filtro",B.b48,"Attenzione alle parole troppo corte: una radice di tre lettere finisce dentro parole innocenti e blocca messaggi normali.",!1,null)
-B.bld=s(["Quando qualcuno compra un biglietto, paga in app. I dati della carta non passano mai da GoOut: li custodisce Stripe.","I soldi vanno subito nel tuo conto Stripe. GoOut tiene la sua parte e non tocca il resto.","La tua parte resta ferma l\xec per 48 ore dopo la serata. Serve a dare tempo a chi ha pagato di dire se qualcosa non \xe8 andato.","Passate le 48 ore, i soldi partono da soli verso la tua banca. Non devi chiedere niente a nessuno."],t.s)
-B.asa=new A.hB("Come funzionano i soldi dei biglietti",B.bld,"Se annulli un evento, tutti vengono rimborsati e a te viene ridata anche la parte di GoOut: non ci rimetti la nostra commissione.",!1,null)
-B.bin=s(["Scegli un gruppo che esce nei prossimi giorni.","Gli proponi uno dei tuoi men\xf9. Chi organizza riceve un avviso.","Se accetta, i partecipanti pagano il men\xf9 in app e il posto \xe8 confermato \u2014 nessuno pu\xf2 prenotare e non presentarsi.","L'incasso arriva sul tuo conto. Con Go Max non c'\xe8 commissione."],t.s)
-B.asb=new A.hB("Come funziona un invito",B.bin,"Un invito per gruppo: se hai gi\xe0 scritto a una serata, non puoi insistere. \xc8 la regola che tiene gli inviti graditi.",!1,null)
-B.b40=s(["Un evento finito, o annullato, sparisce da solo dopo 48 ore.","Ma solo se non c'\xe8 pi\xf9 niente in sospeso: nessuna contestazione, nessun rimborso da decidere, e tutti i soldi o incassati o restituiti.","Se qualcosa manca, l'evento resta e compare qui sopra con il motivo. Il giro riprova ogni notte: quando la pratica si chiude, se ne va da solo.","Si cancellano davvero solo le serate che non hanno niente da custodire: nessun biglietto, nessuna foto e nessuno che ci sia andato. Le altre vengono archiviate: spariscono dagli elenchi, ma restano i conti e l'album."],t.s)
-B.asc=new A.hB("Come funziona la pulizia",B.b40,"Non c'\xe8 niente da premere. Questa schermata serve a vedere chi sta ancora aspettando qualcosa.",!1,null)
 B.box=s(["Titolo, luogo, data: sono le tre cose che gli altri leggono per primi. Scrivile come le diresti a un amico.","Scegli quante persone possono partecipare. Il minimo serve a te: sotto quel numero saprai che l'evento non ha preso.","Decidi se \xe8 gratuito o a pagamento. Se metti un prezzo, GoOut trattiene una percentuale su ogni biglietto e il resto arriva a te.","Pubblica. Da quel momento comparir\xe0 a tutti nella Home."],t.s)
-B.asd=new A.hB("Come si crea un evento",B.box,"Per vendere biglietti servono due cose: il profilo completo e un conto collegato (lo trovi in Profilo). Il prezzo minimo \xe8 3 euro. Se l'evento \xe8 gratis, non serve niente di tutto questo.",!1,null)
+B.as9=new A.hB("Come si crea un evento",B.box,"Per aprire una serata \u2014 gratuita o a pagamento \u2014 serve il livello Host VIP. Per vendere biglietti servono anche il profilo completo e un conto collegato (lo trovi in Profilo), e il prezzo minimo \xe8 3 euro.",!1,null)
+B.b48=s(["Un messaggio che contiene una di queste parole non viene proprio inviato: chi scrive lo scopre subito, non dopo.",'Il controllo non si lascia ingannare dai trucchi: "c4zz0", "c-a-z-z-o" e "caaaazzo" vengono riconosciuti come la stessa parola.','Basta la radice. Mettendo "stupid" cadono anche "stupido", "stupida" e "stupidi".'],t.s)
+B.asa=new A.hB("Come funziona il filtro",B.b48,"Attenzione alle parole troppo corte: una radice di tre lettere finisce dentro parole innocenti e blocca messaggi normali.",!1,null)
+B.bld=s(["Quando qualcuno compra un biglietto, paga in app. I dati della carta non passano mai da GoOut: li custodisce Stripe.","I soldi vanno subito nel tuo conto Stripe. GoOut tiene la sua parte e non tocca il resto.","La tua parte resta ferma l\xec per 48 ore dopo la serata. Serve a dare tempo a chi ha pagato di dire se qualcosa non \xe8 andato.","Passate le 48 ore, i soldi partono da soli verso la tua banca. Non devi chiedere niente a nessuno."],t.s)
+B.asb=new A.hB("Come funzionano i soldi dei biglietti",B.bld,"Se annulli un evento, tutti vengono rimborsati e a te viene ridata anche la parte di GoOut: non ci rimetti la nostra commissione.",!1,null)
+B.bin=s(["Scegli un gruppo che esce nei prossimi giorni.","Gli proponi uno dei tuoi men\xf9. Chi organizza riceve un avviso.","Se accetta, i partecipanti pagano il men\xf9 in app e il posto \xe8 confermato \u2014 nessuno pu\xf2 prenotare e non presentarsi.","L'incasso arriva sul tuo conto. Con Go Max non c'\xe8 commissione."],t.s)
+B.asc=new A.hB("Come funziona un invito",B.bin,"Un invito per gruppo: se hai gi\xe0 scritto a una serata, non puoi insistere. \xc8 la regola che tiene gli inviti graditi.",!1,null)
+B.b40=s(["Un evento finito, o annullato, sparisce da solo dopo 48 ore.","Ma solo se non c'\xe8 pi\xf9 niente in sospeso: nessuna contestazione, nessun rimborso da decidere, e tutti i soldi o incassati o restituiti.","Se qualcosa manca, l'evento resta e compare qui sopra con il motivo. Il giro riprova ogni notte: quando la pratica si chiude, se ne va da solo.","Si cancellano davvero solo le serate che non hanno niente da custodire: nessun biglietto, nessuna foto e nessuno che ci sia andato. Le altre vengono archiviate: spariscono dagli elenchi, ma restano i conti e l'album."],t.s)
+B.asd=new A.hB("Come funziona la pulizia",B.b40,"Non c'\xe8 niente da premere. Questa schermata serve a vedere chi sta ancora aspettando qualcosa.",!1,null)
 B.aKJ=s(["Ogni piatto va in una SEZIONE: antipasti, primi, secondi, dolci. Puoi scrivere anche sezioni tue.","Il PREZZO va scritto davvero. Una carta senza prezzi non risponde alla domanda per cui la gente la apre.","Segna i piatti vegetariani, vegani o senza glutine. Chi ha un'allergia cerca esattamente quello, e non trovandolo rinuncia al locale."],t.s)
 B.ase=new A.hB("Come si scrive una carta",B.aKJ,"Questa carta si legge e basta: non si prenota e non si paga. Per farti prenotare servono i men\xf9 a prezzo fisso.",!1,null)
 B.boo=s(["Chi ha comprato un biglietto ha chiesto indietro i soldi, o ha segnalato che l'evento non si \xe8 tenuto.","A decidere \xe8 chi ha organizzato. Ma \xe8 anche la persona a cui verrebbero tolti i soldi: se non risponde, la somma resta ferma per sempre.","Passati i giorni di attesa, la pratica compare qui e potete deciderla voi."],t.s)

@@ -1,7 +1,7 @@
 {
     "name": "GoOut",
     "short_name": "GoOut",
-    "description": "Organizza una serata, trova chi ci viene, prenota il locale.",
+    "description": "Trova le serate vicino a te, vedi chi ci viene, prenota il locale.",
     "lang": "it",
     "start_url": "app/",
     "scope": "./",
