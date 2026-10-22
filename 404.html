@@ -9,7 +9,9 @@
 <!--
     LA PAGINA CHE RACCOGLIE GLI INVITI
 
-    I link degli inviti hanno la forma gruppogoout.com/evento/<id>. Su
+    I link degli inviti hanno la forma gruppogoout.com/evento/<id> —
+    e dal 22 ottobre 2026 anche gruppogoout.com/gruppo/<id>, per
+    invitare in un gruppo da WhatsApp o da Telegram. Su
     quel percorso non c'e' nessun file: il sito ha la pagina di GoOut,
     la privacy, i termini e la cancellazione dell'account. GitHub Pages, quando non trova la pagina chiesta, serve
     questa — ed e' l'unico punto in cui possiamo intercettarli.
@@ -110,7 +112,8 @@
   var negozio = document.getElementById('negozio');
 
   var noti = { evento: 'evento', eventi: 'evento', locale: 'locale',
-               locali: 'locale', ristorante: 'locale' };
+               locali: 'locale', ristorante: 'locale',
+               gruppo: 'gruppo', gruppi: 'gruppo' };
   var tipo = noti[cosa];
 
   if (!tipo) {
@@ -123,6 +126,12 @@
   if (tipo === 'locale') {
     titolo.textContent = 'Questo locale si apre in GoOut';
     spiega.textContent = 'La scheda del locale e le serate in programma stanno dentro GoOut.';
+  }
+
+  // Un invito a un gruppo, arrivato da WhatsApp o da Telegram.
+  if (tipo === 'gruppo') {
+    titolo.textContent = 'Sei stato invitato in un gruppo';
+    spiega.textContent = 'Il gruppo, la chat e i sondaggi stanno dentro GoOut.';
   }
 
   // Chi ha gia' l'app: lo schema privato funziona anche senza che
@@ -139,8 +148,11 @@
   // alla prima apertura: e' l'unico modo di sapere, dopo l'installazione,
   // per quale serata quella persona era venuta. Senza, si finiva sulla
   // home a cercarla in mezzo alle altre, e quasi nessuno lo fa.
-  if (tipo === 'evento' && id) {
-    negozio.href += '&referrer=' + encodeURIComponent('evento=' + id);
+  // Vale anche per i gruppi: chi installa l'app per entrare in un
+  // gruppo ci arriva dentro alla prima apertura, invece di trovarsi
+  // sulla home a cercarlo.
+  if (id && (tipo === 'evento' || tipo === 'gruppo')) {
+    negozio.href += '&referrer=' + encodeURIComponent(tipo + '=' + id);
   }
 
   // Da computer, l'invito si apre lo stesso: GoOut gira nel browser
@@ -148,8 +160,8 @@
   if (!/Android|iPhone|iPad/i.test(navigator.userAgent)) {
     spiega.textContent = 'Sei da computer: GoOut si apre anche nel browser.';
     negozio.textContent = 'Apri GoOut nel browser';
-    negozio.href = (tipo === 'evento' && id)
-      ? '/app/?evento=' + encodeURIComponent(id)
+    negozio.href = (id && (tipo === 'evento' || tipo === 'gruppo'))
+      ? '/app/?' + tipo + '=' + encodeURIComponent(id)
       : '/app/';
   }
 })();
